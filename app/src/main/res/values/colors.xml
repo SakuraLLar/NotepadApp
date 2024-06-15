@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="black">#FF000000</color>
+    <color name="blackVersionNew">#1D1D1D</color>
+    <color name="transparent">#00FFFFFF</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="whiteLight">#80FFFFFF</color>
+    <color name="grey">#3a3a3a</color>
+    <color name="greyLight">#979797</color>
+    <color name="redLight">#FFD14922</color>
+    <color name="yellow">#FFF6B33F</color>
+
 </resources>
