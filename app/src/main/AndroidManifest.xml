@@ -12,21 +12,50 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NotepadApp"
         tools:targetApi="31">
+
+        <activity
+            android:name=".WidgetActivity"
+            android:exported="false"
+            android:theme="@style/Theme.NotepadApp" />
+
+        <receiver
+            android:name=".WidgetNote"
+            android:exported="false">
+
+            <intent-filter>
+                <action android:name="NEW_NOTE_CREATED" />
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_note_info" />
+
+
+        </receiver>
+
         <activity
             android:name=".Search"
             android:exported="false" />
+
         <activity
             android:name=".AddNote"
             android:exported="false" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
+
     </application>
 
 </manifest>

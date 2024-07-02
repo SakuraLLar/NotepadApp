@@ -30,11 +30,17 @@ class Search : AppCompatActivity() {
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
 
             if (result.resultCode == Activity.RESULT_OK) {
+
                 val note = result.data?.getSerializableExtra("note") as? Note
 
                 if (note != null) {
-
                     viewModel.updateNote(note)
+
+                    viewModel.searchNotes(binding.svSearch.query.toString()).observe(this) { list ->
+                        list?.let {
+                            adapter.updateList(it)
+                        }
+                    }
                 }
             }
         }
@@ -73,6 +79,7 @@ class Search : AppCompatActivity() {
                     adapter =
                         NotesAdapter(this@Search, object : NotesAdapter.NotesItemClickListener {
                             override fun onItemClicked(note: Note) {
+
                                 val intent = Intent(this@Search, AddNote::class.java)
 
                                 intent.putExtra("current_note", note)
@@ -85,6 +92,7 @@ class Search : AppCompatActivity() {
                                 popupMenu.inflate(R.menu.pop_up_menu)
 
                                 popupMenu.setOnMenuItemClickListener { menuItem ->
+
                                     when (menuItem.itemId) {
                                         R.id.delete_note -> {
                                             viewModel.deleteNote(note)

@@ -1,6 +1,7 @@
 package sakura.llar.notepadapp.Adapter
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -39,6 +40,7 @@ class NotesAdapter(private val context: Context, val listener: NotesItemClickLis
         holder.notes_layout.setOnClickListener {
             listener.onItemClicked(notesList[holder.adapterPosition])
         }
+
         holder.notes_layout.setOnLongClickListener {
             listener.onLongItemClicked(notesList[holder.adapterPosition], holder.notes_layout)
             true
@@ -46,6 +48,7 @@ class NotesAdapter(private val context: Context, val listener: NotesItemClickLis
     }
 
     fun updateList(newList: List<Note>) {
+        Log.d("NotesAdapter", "Updating list with ${newList.size} notes")
 
         fullList.clear()
         fullList.addAll(newList)

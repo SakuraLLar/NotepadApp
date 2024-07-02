@@ -3,7 +3,6 @@ package sakura.llar.notepadapp.Models
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import java.io.Serial
 
 @Entity(tableName = "notes_table")
 data class Note(
